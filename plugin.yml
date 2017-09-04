@@ -1,0 +1,167 @@
+main: me.greenadine.worldspawns.Main
+name: WorldSpawns
+version: 2.2
+load: STARTUP
+database: false
+author: Greenadine
+prefix: WorldSpawns
+description: Set seperate spawns for every world.
+softdepend: [WorldEdit]
+
+commands:
+    worldspawns:
+        description: The plugin's main command.
+        aliases: [worldspawn, ws, worlds, wspawns, wspawn]
+    hub:
+        description: Teleport to the server's hub, if enabled.
+    fhub:
+        description: Teleport to the server's hub, without delay, if enabled.
+    sethub:
+        description: Set the server's hub.
+        aliases: [seth, shub]
+    resethub:
+        description: Set the server's hub.
+        aliases: [reshub, resh, rhub]
+    spawn:
+        description: Teleport to your world's or another world's spawn.
+    fspawn:
+        description: Teleport to your world's or another world's spawn, without delay.
+    setspawn:
+        description: Set the spawn for the world you are currently in.
+        aliases: [sspawn, sets]
+    delspawn:
+        description: Delete the spawn of a world.
+        aliases: [dels, dspawn]
+    setnewbie:
+        description: Set the spawn for new players.
+        aliases: [snewbie, setn]
+    resetnewbie:
+        description: Reset the spawn for new players.
+        aliases: [resnewbie, resn, rnewbie]
+permissions:
+    worldspawns.admin:
+        description: Full use of the plugin.
+        default: op
+        children:
+          worldspawns.command.*: true
+          worldspawns.spawn.*: true
+          worldspawns.hub.*: true
+          worldspawns.sign.*: true
+    worldspawns.moderator:
+        description: Moderator permissions of the plugin.
+        default: op
+        children:
+          worldspawns.command: true
+          worldspawns.command.check: true
+          worldspawns.spawn.player: true
+          worldspawns.player: true
+    worldspawns.player:
+        description: Default player permissions of the plugin.
+        default: true
+        children:
+            worldspawns.command.spawns: true
+            worldspawns.command.hub: true
+            worldspawns.spawn: true
+            worldspawns.spawn.other: true
+            worldspawns.hub: true
+    worldspawns.command.*:
+        description: Allows full usage of /worldspawns.
+        default: op
+        children:
+            worldspawns.command.main: true
+            worldspawns.command.reload: true
+            worldspawns.command.spawns: true
+            worldspawns.command.hub: true
+            worldspawns.command.enablehub: true
+            worldspawns.command.check: true
+            worldspawns.spawn.other: true
+            worldspawns.spawn.player: true
+    worldspawns.command.main:
+        description: Allows main usage of /worldspawns.
+        default: op
+    worldspawns.command.reload:
+        description: Allows usage of the main command's reload feature.
+        default: op
+    worldspawns.command.spawns:
+        description: Allows usage of /worldspawns spawns.
+        default: op
+    worldspawns.command.hub:
+        description: Allows usage of /worldspawns hub.
+        default: op
+    worldspawns.command.enablehub:
+        description: Allows usage of /worldspawns enablehub.
+        default: op
+    worldspawns.command.check:
+        description: Allows usage of the main command's check feature.
+        default: op
+    worldspawns.command.reset:
+        description: Allows usage of the main command's reset feature.
+        default: op
+    worldspawns.command.permissions:
+        description: Allows usage of /worldspawns permissions.
+        default: op
+    worldspawns.spawn.*:
+        description: Allows full usage of spawn-related commands.
+        default: op
+        children:
+            worldspawns.spawn: true
+            worldspawns.fspawn: true
+            worldspawns.spawn.other: true
+            worldspawns.spawn.players: true
+            worldspawns.spawn.world.all: true
+    worldspawns.spawn:
+        description: Allows usage of /spawn.
+        default: true
+    worldspawns.fspawn:
+        description: Allows usage of /fspawn.
+        default: op
+    worldspawns.spawn.other:
+        description: Allows teleporting to other worlds' spawns.
+        default: true
+    worldspawns.spawn.players:
+        description: Allows teleporting other players to a world's spawn.
+        default: op
+    worldspawns.spawn.world.all:
+        description: Allows teleporting to all worlds.
+        default: op
+    worldspawns.spawn.set:
+        description: Allows usage of /setspawn.
+        default: op
+    worldspawns.spawn.delete:
+        description: Allows usage of /delspawn.
+        default: op
+    worldspawns.hub.*:
+        description: Allows full usage of hub-related commands.
+        default: op
+        children:
+            worldspawns.hub: true
+            worldspawns.fhub: true
+            worldspawns.hub.other: true
+            worldspawns.hub.players: true
+    worldspawns.hub:
+        description: Allows usage of /hub.
+        default: true
+    worldspawns.fhub:
+        description: Allows usage of /fhub.
+        default: op
+    worldspawns.hub.players:
+        description: Allows teleporting others to the hub.
+        default: op
+    worldspawns.hub.set:
+        description: Allows usage of /sethub.
+        default: op
+    worldspawns.hub.reset:
+        description: Allows usage of /resethub.
+        default: op
+    worldspawns.sign.*:
+        description: Allows full use of WorldSpawns signs.
+        default: op
+        children:
+            worldspawns.sign.hub: true
+            worldspawns.sign.spawn: true
+    worldspawns.sign.hub:
+        description: Allows creating and destroying WorldSpawns hub signs.
+        default: op
+    worldspawns.sign.spawn:
+        description: Allows creating and destroying WorldSpawns spawn signs.
+        default: op
