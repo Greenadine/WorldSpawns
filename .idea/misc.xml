@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DiscordProjectSettings">
+    <option name="show" value="ASK" />
+    <option name="description" value="" />
+    <option name="theme" value="material" />
+    <option name="button1Title" value="" />
+    <option name="button1Url" value="" />
+    <option name="button2Title" value="" />
+    <option name="button2Url" value="" />
+  </component>
+  <component name="EntryPointsManager">
+    <list size="4">
+      <item index="0" class="java.lang.String" itemvalue="co.aikar.commands.annotation.Default" />
+      <item index="1" class="java.lang.String" itemvalue="co.aikar.commands.annotation.HelpCommand" />
+      <item index="2" class="java.lang.String" itemvalue="co.aikar.commands.annotation.Subcommand" />
+      <item index="3" class="java.lang.String" itemvalue="org.bukkit.event.EventHandler" />
+    </list>
+    <writeAnnotations>
+      <writeAnnotation name="co.aikar.commands.annotation.Dependency" />
+    </writeAnnotations>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="OpenJDK 21" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

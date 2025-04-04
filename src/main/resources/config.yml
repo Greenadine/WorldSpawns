@@ -1,0 +1,71 @@
+######################################################################################################
+# +------------------------------------------------------------------------------------------------+ #
+# |                                 WorldSpawns Configuration File                                 | #
+# |                                                                                                | #
+# | WIKI: https://github.com/Greenadine/WorldSpawns/wiki                                           | #
+# | BUG REPORTS: https://github.com/Greenadine/WorldSpawns/issues                                  | #
+# |                                                                                                | #
+# |                                                                                                | #
+# | Please remember that new options are not automatically added to the config file. If you want   | #
+# | to use them, you will have to add them manually, or delete the config file to generate a new   | #
+# | one with the new options. If not, default values will be used.                                 | #
+# +------------------------------------------------------------------------------------------------+ #
+######################################################################################################
+
+# The language to use for messages. For a list of available languages, see the wiki.
+language: en
+
+# Configure whether teleporting should be cancelled if a player moves during the countdown.
+cancel-teleport-on-move: true
+
+# Configure whether teleporting should be cancelled if a player takes damage during the countdown.
+cancel-teleport-on-damage: true
+
+# Configure whether players should be teleported somewhere whenever they respawn.
+#
+# The following options are available:
+# - 'spawn'   : Teleport to the spawn of the world the player died in.
+# - '[world]' : Teleport to the spawn of the specified world.
+# - 'newbie'  : Teleport to the spawn for new players.
+# - 'hub'     : Teleport to the hub.
+# - 'disable' : Do not teleport the player.
+teleport-on-respawn: spawn
+
+# Configure whether players should be teleported whenever they join the server.
+#
+# The following options are available:
+# - 'spawn'   : Teleport to the spawn of the world the player was last in.
+# - '[world]' : Teleport to the spawn of the specified world.
+# - 'newbie'  : Teleport to the spawn for new players.
+# - 'hub'     : Teleport to the hub.
+# - 'disable' : Do not teleport the player.
+teleport-on-join: disable
+
+# Configure whether new players should be teleported when they join the server.
+#
+# The following options are available:
+# - '[world]' : Teleport to the spawn of the specified world.
+# - 'newbie'  : Teleport to the spawn for new players.
+# - 'hub'     : Teleport to the hub.
+# - 'disable' : Do not teleport the player.
+teleport-new-players: newbie
+
+# Configure the delay in seconds before teleporting.
+#
+# The delay can be configured individually for the hub and spawns, as well as on a per-world basis.
+# Set the delay to 0 to disable it.
+teleport-delay:
+  hub: 4
+  world:
+    default: 4
+    # world: 10
+
+# Configure the cooldown in seconds before players can teleport again using the /spawn or /hub command.
+#
+# The cooldown can be configured individually for the hub and spawns, as well as on a per-world basis.
+# Set the cooldown to 0 to disable it.
+teleport-cooldown:
+  hub: 0
+  world:
+    default: 0
+    # world: 10

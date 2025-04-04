@@ -1,0 +1,14 @@
+WorldSpawns uses the following third-party projects:
+
+[commands] (fork)
+URL: https://github.com/aikar/commands
+Fork URL: https://github.com/Greenadine/commands
+License: MIT License
+
+[locales]
+URL: https://github.com/aikar/locales
+License: MIT License
+
+[UniversalScheduler]
+URL: https://github.com/Anon8281/UniversalScheduler
+License: MIT License

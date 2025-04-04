@@ -1,0 +1,13 @@
+# Directories
+/shelf/
+/codeStyles/
+
+# Ignore all XML files by default
+*.xml
+# XML Whitelist
+!/inspectionProfiles/*.xml
+!/runConfigurations/*.xml
+!compiler.xml
+!jarRepositories.xml
+!misc.xml
+!vcs.xml

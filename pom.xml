@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>dev.greenadine</groupId>
+    <artifactId>worldspawns</artifactId>
+    <version>3.0.0</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <plcommons.version>0.2.0-SNAPSHOT</plcommons.version>
+    </properties>
+
+    <dependencies>
+        <!-- Spigot API -->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.21.4-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.mojang</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- PLCommons -->
+        <dependency>
+            <groupId>dev.greenadine.plcommons</groupId>
+            <artifactId>plcommons-core</artifactId>
+            <version>${plcommons.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>dev.greenadine.plcommons</groupId>
+            <artifactId>plcommons-config</artifactId>
+            <version>${plcommons.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>..</directory>
+                <includes>
+                    <include>LICENSE.txt</include>
+                    <include>THIRD-PARTY.txt</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>languages</directory>
+            </resource>
+        </resources>
+
+        <plugins>
+            <!-- Compiler -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <release>8</release>
+                    <encoding>UTF-8</encoding>
+                    <parameters>true</parameters>
+                </configuration>
+            </plugin>
+
+            <!-- JAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.2</version>
+                <configuration>
+                    <outputDirectory>${serverDir}/plugins</outputDirectory>
+                </configuration>
+            </plugin>
+
+            <!-- Shade -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <createDependencyReducedPom>false</createDependencyReducedPom>
+                    <shadedArtifactAttached>false</shadedArtifactAttached>
+                    <artifactSet>
+                        <includes>
+                            <include>dev.greenadine.plcommons:*</include>
+                            <include>co.aikar:*</include>
+                            <include>com.github.Anon8281:UniversalScheduler</include>
+                        </includes>
+                    </artifactSet>
+                    <relocations>
+                        <relocation>
+                            <pattern>dev.greenadine.plcommons</pattern>
+                            <shadedPattern>dev.greenadine.worldspawns.lib.plcommons</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>co.aikar.commands</pattern>
+                            <shadedPattern>dev.greenadine.worldspawns.lib.plcommons.commands</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>co.aikar.locales</pattern>
+                            <shadedPattern>dev.greenadine.worldspawns.lib.plcommons.locales</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>com.github.Anon8281.universalScheduler</pattern>
+                            <shadedPattern>dev.greenadine.worldspawns.lib.plcommons.scheduling</shadedPattern>
+                        </relocation>
+                    </relocations>
+                </configuration>
+            </plugin>
+
+            <!-- License -->
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>4.6</version>
+                <configuration>
+                    <properties>
+                        <year>2025</year>
+                        <owner>Kevin "Greenadine" Zuman</owner>
+                    </properties>
+                    <licenseSets>
+                        <licenseSet>
+                            <header>LICENSE_HEADER.txt</header>
+                            <includes>
+                                <include>**/*.java</include>
+                                <include>**/*.properties</include>
+                            </includes>
+                        </licenseSet>
+                    </licenseSets>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
