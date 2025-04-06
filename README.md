@@ -10,5 +10,6 @@ WorldSpawns is a simple, lightweight plugin for setting spawnpoints on a per-wor
 * Multi-language support. *(WIP, see [here](https://github.com/Greenadine/WorldSpawns/wiki/Translations) for a list of supported languages)*
 
 # Download
-* [Hangar (Paper / Folia)](https://hangar.papermc.io/Greenadine/WorldSpawns)
-* [BukkitDev (Bukkit / Spigot)](https://dev.bukkit.org/projects/worldspawns)
+* [Hangar](https://hangar.papermc.io/Greenadine/WorldSpawns)
+* [SpigotMC](https://spigotmc.org/resources/worldspawns.42566/)
+* [BukkitDev](https://dev.bukkit.org/projects/worldspawns)
