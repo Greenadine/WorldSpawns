@@ -16,26 +16,25 @@
 package dev.greenadine.worldspawns;
 
 import org.bukkit.World;
+import org.bukkit.entity.Player;
 
 public final class Permissions {
 
     private static final String PREFIX = "worldspawns.";
 
-    public static final String HUB = PREFIX + "hub";
-    public static final String MANAGE_HUB = HUB + ".manage";
+    public static final String ADMIN = PREFIX + ".admin";
+
     public static final String SPAWN = PREFIX + "spawn";
-    public static final String SPAWN_OTHER = SPAWN + ".other";
     public static final String MANAGE_SPAWN = SPAWN + ".manage";
     public static final String NEWBIE = PREFIX + "newbie";
+    public static final String HUB = PREFIX + "hub";
+    public static final String MANAGE_HUB = HUB + ".manage";
     public static final String FORCE = PREFIX + "force";
 
-    /**
-     * Gets the permission for the specified world.
-     *
-     * @param world the world to get the permission for.
-     * @return the permission for the specified world.
-     */
-    public static String getWorldPermission(World world) {
-        return SPAWN + ".world." + world.getName();
+    private static final String WORLD = SPAWN + ".world";
+
+    // Checks if the player has permission to teleport to the specified world.
+    public static boolean hasPermissionForWorld(Player player, World world) {
+        return player.hasPermission(WORLD + ".*") || player.hasPermission(WORLD + "." + world.getName()) || player.hasPermission(ADMIN);
     }
 }

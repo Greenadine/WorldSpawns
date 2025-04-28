@@ -1,62 +1,65 @@
 name: WorldSpawns
 version: '${project.version}'
 author: Greenadine
+website: https://greenadine.dev
 main: dev.greenadine.worldspawns.WorldSpawns
 api-version: '1.13'
 prefix: 'WorldSpawns'
+folia-supported: true
 commands:
   spawn:
     usage: /spawn [world]
     description: Teleport to spawn.
+    permission: worldspawns.spawn
   hub:
     usage: /hub
     description: Teleport to hub.
+    permission: worldspawns.hub
     aliases: [ h ]
   newbie:
     usage: /newbie
+    permission: worldspawns.newbie
     description: Manage the spawn location for new players.
     aliases: [ new ]
 
 permissions:
-  worldspawns.admin:
-    description: Gives access to all WorldSpawns commands.
-    default: op
-    children:
-        worldspawns.spawn.*: true
-        worldspawns.hub.*: true
-        worldspawns.newbie: true
-        worldspawns.force: true
-  worldspawns.spawn.*:
-    description: Gives access to all spawn commands.
-    default: op
-    children:
-        worldspawns.spawn: true
-        worldspawns.spawn.other: true
-        worldspawns.spawn.set: true
-        worldspawns.spawn.clear: true
-  worldspawns.hub.*:
-    description: Gives access to all hub commands.
-    default: op
-    children:
-        worldspawns.hub: true
-        worldspawns.hub.set: true
-        worldspawns.hub.clear: true
-
   worldspawns.hub:
     description: Allows the player to teleport to the hub with '/hub'.
     default: true
   worldspawns.hub.manage:
     description: Allows the player to set and clear the hub with '/hub set' and '/hub clear'.
-    default: op
   worldspawns.spawn:
     description: Allows the player to teleport to spawn with '/spawn'.
     default: true
   worldspawns.spawn.other:
     description: Allows the player to teleport to another world's spawn with '/spawn [world]'.
-    default: op
   worldspawns.spawn.manage:
     description: Allows the player to set and clear spawns with '/spawn set' and '/spawn clear'.
-    default: op
   worldspawns.newbie:
     description: Allows the player to manage the spawn location for new players with '/newbie'.
+  worldspawns.force:
+    description: Allows the player to skip teleport delays with e.g. '/spawn -force'.
+
+  worldspawns.spawn.*:
+    description: Gives access to all spawn commands.
     default: op
+    children:
+      worldspawns.spawn: true
+      worldspawns.spawn.other: true
+      worldspawns.spawn.set: true
+      worldspawns.spawn.clear: true
+  worldspawns.hub.*:
+    description: Gives access to all hub commands.
+    default: op
+    children:
+      worldspawns.hub: true
+      worldspawns.hub.set: true
+      worldspawns.hub.clear: true
+  worldspawns.admin:
+    description: Gives access to all WorldSpawns commands.
+    default: op
+    children:
+      worldspawns.spawn.*: true
+      worldspawns.hub.*: true
+      worldspawns.newbie: true
+      worldspawns.force: true

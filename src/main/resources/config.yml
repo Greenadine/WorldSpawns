@@ -69,3 +69,9 @@ teleport-cooldown:
   world:
     default: 0
     # world: 10
+
+# If this is enabled, extensive debug information will be printed to the console.
+#
+# Please make sure to enable this feature if you would like to report an issue with the plugin, as it
+# will help to identify the problem.
+debug: false

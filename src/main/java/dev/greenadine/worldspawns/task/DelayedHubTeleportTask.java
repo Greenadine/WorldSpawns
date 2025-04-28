@@ -67,17 +67,17 @@ public class DelayedHubTeleportTask implements Runnable {
             return;
         }
 
-        // Cancel if the player moved
-        if (config.cancelTeleportOnMove && PlayerUtils.hasMoved(player, initLoc)) {
-            final String message = languageManager.formatMessage(player, MessageType.ERROR, MessageKeys.TELEPORT_CANCELLED_MOVE);
+        // Cancel if the player took damage
+        if (config.cancelTeleportOnDamage && PlayerUtils.hasTakenDamage(player)) {
+            final String message = languageManager.formatMessage(player, MessageType.ERROR, MessageKeys.TELEPORT_CANCELLED_DAMAGE);
             player.sendMessage(" " + message);
             cancel.run();
             return;
         }
 
-        // Cancel if the player took damage
-        if (config.cancelTeleportOnDamage && PlayerUtils.hasTakenDamage(player)) {
-            final String message = languageManager.formatMessage(player, MessageType.ERROR, MessageKeys.TELEPORT_CANCELLED_DAMAGE);
+        // Cancel if the player moved
+        if (config.cancelTeleportOnMove && PlayerUtils.hasMoved(player, initLoc)) {
+            final String message = languageManager.formatMessage(player, MessageType.ERROR, MessageKeys.TELEPORT_CANCELLED_MOVE);
             player.sendMessage(" " + message);
             cancel.run();
             return;

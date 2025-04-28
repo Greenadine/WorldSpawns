@@ -36,12 +36,13 @@ public class WorldSpawns extends PLCommonsPlugin {
         if (getCommand("hub") == null)
             PluginLogger.warn("Unable to register the '/hub' command. This can be caused by other plugins or by editing the plugin.yml file.");
 
+        final DependencyManager dm = PLCommons.getDependencyManager();
         // Config & SpawnManager
         saveDefaultConfig();
         final Config config = new Config();
-        registerDependency(Config.class, config);
+        dm.registerDependency(Config.class, config);
         final DataManager dataManager = new DataManager();
-        registerDependency(dataManager);
+        dm.registerDependency(dataManager);
 
         // Language manager
         final Locale configLang = config.language;
@@ -50,16 +51,16 @@ public class WorldSpawns extends PLCommonsPlugin {
         final LanguageManager languageManager = new LanguageManager(configLang);
         languageManager.addMessageBundle("WorldSpawns");
         languageManager.setFormat(MessageType.INFO, ChatColor.WHITE, ChatColor.GRAY, ChatColor.GOLD);
-        registerDependency(LanguageManager.class, languageManager);
+        dm.registerDependency(LanguageManager.class, languageManager);
 
         // Listeners
         if (config.teleportOnJoinSetting != Config.TeleportSetting.DISABLE || config.teleportNewPlayersSetting != Config.TeleportSetting.DISABLE)
-            Events.registerListener(new PlayerJoinListener());
+            Events.registerListener(new PlayerJoinListener(), true);
         if (config.teleportOnRespawnSetting != Config.TeleportSetting.DISABLE)
-            Events.registerListener(new PlayerRespawnListener());
+            Events.registerListener(new PlayerRespawnListener(), true);
 
         // Commands
-        registerDependency(new Cooldowns(languageManager));
+        dm.registerDependency(new Cooldowns(languageManager));
         Commands.init();
     }
 

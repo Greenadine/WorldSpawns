@@ -48,10 +48,10 @@ public class SpawnCommand extends PLCommonsCommand {
         if (world == null)
             world = player.getWorld();
         final String worldName = world.getName();
-        final boolean diffWorld = !player.getWorld().equals(world);
+        final boolean diffWorld = !player.getWorld().getUID().equals(world.getUID());
 
         // Check if player has permission to teleport to the world
-        if (diffWorld && (!player.hasPermission(Permissions.SPAWN_OTHER) || !player.hasPermission(Permissions.getWorldPermission(world)))) {
+        if (diffWorld && !Permissions.hasPermissionForWorld(player, world)) {
             invoker.sendError(MessageKeys.TELEPORT_WORLD_NO_PERMISSION, "world", worldName);
             return;
         }

@@ -6,7 +6,7 @@
 
     <groupId>dev.greenadine</groupId>
     <artifactId>worldspawns</artifactId>
-    <version>3.0.0</version>
+    <version>3.1.1</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -19,7 +19,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.21.4-R0.1-SNAPSHOT</version>
+            <version>1.21.5-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
